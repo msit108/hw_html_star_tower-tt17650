@@ -1,38 +1,76 @@
-﻿<!DOCTYPE html>
+﻿<!-- homework OK file, version:02,by Yu-Yi Lin -->
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
 	<meta charset="utf-8" />
     <script type="text/javascript">
+        var star = "";
         function starTower(inputData) {
-            for (i = 1; i <= inputData; i++) {
-                for (j = 1; j <= i; j++) {
-                    document.write("＊");
+            starTower1(inputData);
+            starTower2(inputData);
+            starTower3(inputData);
+        }
+
+        function starTower1(inputData) {
+            star = "";
+            for (Row = 1; Row <= inputData; Row++) {
+                for (column = 1; column <= Row; column++) {
+                    //document.write("＊");
+                    star += "＊　";
                 }
-                document.write("<br />");
+                //document.write("<br />");
+                star += "<br />";
             }
+            txt2.value = "您輸入的資料為： " + inputData;
+            debug.innerHTML = star;
+        }
+
+        function starTower2(inputData) {
+            star += "<br><hr><br>";
+            for (Row = 1; Row <= inputData; Row++) {
+                for (column = (inputData-Row); column >0; column--) {
+                    star += "　　";
+                }
+                for (column = 1; column <= Row; column++) {
+                    star += "＊　";
+                }
+                star += "<br />";
+            }
+            debug.innerHTML = star;
+        }
+
+        function starTower3(inputData) {
+            star += "<br><hr><br>";
+            for (Row = 1; Row <= inputData; Row++) {
+                for (column = (inputData - Row) ; column > 0; column--) {
+                    star += "　&nbsp";
+                }
+                for (column = 1; column <= Row; column++) {
+                    star += "＊　";
+                }
+                star += "<br />";
+            }
+            debug.innerHTML = star;
         }
 
         function Button1_onclick() {
             //txt2.value = txt1.value;
-            var inputData = txt1.value;
-            txt2.value = "您輸入的資料為： " + inputData;
-            starTower(inputData);
+            starTower(txt1.value);
         }
     </script>
 </head>
 <body>
-    homework :<br /> 
-    <script>starTower(6);</script>
+    homework_star_tower_by_Yu-YiLin :<br /> 
     <br /><hr /><br />
-    請輸入star Tower階數:
-    <input type="text" id="txt1" value="3" size="40">
+    1.請輸入star Tower階數:
+    <input type="text" id="txt1" value="6" size="40">
     <br><br>
     <input type="button" id="Button1" name="Button1"
            value="2. 點我一下，執行 JavaScript" onclick="Button1_onclick()">
     <br><br>
-    txt2:
+    check:
     <INPUT type="text" id="txt2" value="Result" size="40">
     <br>
     <div id="debug"></div>
